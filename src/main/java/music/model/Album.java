@@ -1,12 +1,19 @@
 package music.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Album {
+
     private int id;
+
     private String name;
+
     private String logo;
+
+    @JsonIgnore
     private List<Track> tracks = new ArrayList<>();
 
     public Album(int id, String name, String logo) {
