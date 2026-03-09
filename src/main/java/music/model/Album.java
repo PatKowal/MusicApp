@@ -1,6 +1,8 @@
 package music.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -11,6 +13,8 @@ public class Album {
 
     private int id;
 
+    @NotNull
+    @Size(min = 2, max = 20)
     private String name;
 
     private String logo;

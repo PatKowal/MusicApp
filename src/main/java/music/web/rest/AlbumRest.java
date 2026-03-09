@@ -1,16 +1,22 @@
 package music.web.rest;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import music.model.Album;
 import music.model.Track;
 import music.service.AlbumService;
 import music.service.TrackService;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +25,8 @@ import java.util.List;
 public class AlbumRest {
     private final AlbumService albumService;
     private final TrackService trackService;
+    private final MessageSource messageSource;
+    private final LocaleResolver localeResolver;
 
     @GetMapping("/albums")
     List<Album> getAlbums(
@@ -61,9 +69,18 @@ public class AlbumRest {
     }
 
     @PostMapping("/albums")
-    ResponseEntity<Album> addAlbum(@RequestBody Album album) {
+    ResponseEntity<?> addAlbum(@Validated @RequestBody Album album, Errors errors, HttpServletRequest request) {
         log.info("adding album: {}", album);
-        // TODO validation
+
+        if(errors.hasErrors()) {
+            Locale locale = localeResolver.resolveLocale(request);
+//            Locale locale = new Locale("pl", "PL");
+            String errorMessage = errors.getAllErrors().stream()
+                    .map(oe->messageSource.getMessage(oe.getCode(),new Object[0],locale))
+                    .reduce("errors:\n", (accu, oe) -> accu + oe + "\n");
+            return ResponseEntity.badRequest().body(errorMessage);
+        }
+
         album = albumService.addAlbum(album);
         log.info("new album added: {}", album);
         return ResponseEntity.status(HttpStatus.CREATED).body(album);

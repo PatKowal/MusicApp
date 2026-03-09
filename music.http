@@ -17,10 +17,11 @@ Accept: application/json
 ### create new album
 POST http://localhost:8080/webapi/albums
 Content-Type: application/json
+Accept-Language: ja
 
 ## Integer w klasach by bylo bez "id" w json
 {
   "id": 0,
-  "name": "123",
+  "name": "1",
   "logo": "123"
 }
