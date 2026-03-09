@@ -13,9 +13,12 @@ public class MusicServiceMain {
         ApplicationContext context = new AnnotationConfigApplicationContext("music");
         AlbumService service = context.getBean(AlbumService.class);
         AlbumService service2 = context.getBean(AlbumService.class);
+
         List<Album> albums = service.getAllAlbums();
-        String foo = context.getBean(String.class);
         System.out.println(albums.size() + " albums found:");
         albums.forEach(System.out::println);
+
+        String foo = context.getBean(String.class);
+        System.out.println("foo: " + foo);
     }
 }

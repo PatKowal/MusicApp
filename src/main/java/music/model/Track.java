@@ -65,8 +65,7 @@ public class Track {
     @Override
     public String toString() {
         return "Track{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", author=" + author +
                 ", duration=" + duration +
                 '}';

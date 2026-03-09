@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@Primary
+//@Primary
 public class DummyAlbumDao implements AlbumDao {
     @Override
     public List<Album> findAll() {

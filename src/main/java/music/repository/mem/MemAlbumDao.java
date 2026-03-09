@@ -2,6 +2,7 @@ package music.repository.mem;
 
 import music.model.Album;
 import music.model.Track;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import music.repository.AlbumDao;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@Primary
 public class MemAlbumDao implements AlbumDao {
     @Override
     public List<Album> findAll() { return SampleData.albums; }

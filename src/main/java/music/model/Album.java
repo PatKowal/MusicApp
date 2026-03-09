@@ -51,4 +51,12 @@ public class Album {
     }
 
     public void addTrack(Track t) { this.tracks.add(t); }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "name='" + name + '\'' +
+                ", logo='" + logo + '\'' +
+                '}';
+    }
 }
