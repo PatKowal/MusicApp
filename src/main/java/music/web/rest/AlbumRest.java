@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.LocaleResolver;
 
@@ -27,6 +28,10 @@ public class AlbumRest {
     private final TrackService trackService;
     private final MessageSource messageSource;
     private final LocaleResolver localeResolver;
+    private final AlbumValidator albumValidator;
+
+//    @InitBinder
+//    void initBinder(WebDataBinder binder) { binder.addValidators(albumValidator); }
 
     @GetMapping("/albums")
     List<Album> getAlbums(

@@ -1,10 +1,9 @@
 package music.service.impl;
 
-import music.model.Author;
+import music.model.Artist;
 import music.model.Track;
-import org.springframework.stereotype.Component;
 import music.repository.AlbumDao;
-import music.repository.AuthorDao;
+import music.repository.ArtistDao;
 import music.repository.TrackDao;
 import music.service.TrackService;
 import org.springframework.stereotype.Service;
@@ -17,12 +16,12 @@ public class TrackServiceBean implements TrackService {
     private static final Logger log = Logger.getLogger(TrackService.class.getName());
 
     private AlbumDao albumDao;
-    private AuthorDao authorDao;
+    private ArtistDao artistDao;
     private TrackDao trackDao;
 
-    public TrackServiceBean(AlbumDao albumDao, AuthorDao authorDao, TrackDao trackDao) {
+    public TrackServiceBean(AlbumDao albumDao, ArtistDao artistDao, TrackDao trackDao) {
         this.albumDao = albumDao;
-        this.authorDao = authorDao;
+        this.artistDao = artistDao;
         this.trackDao = trackDao;
     }
 
@@ -33,9 +32,9 @@ public class TrackServiceBean implements TrackService {
     }
 
     @Override
-    public List<Track> getTracksByAuthor(Author a) {
-        log.info("searching tracks by author " + a.getId());
-        return trackDao.findByAuthor(a);
+    public List<Track> getTracksByArtist(Artist a) {
+        log.info("searching tracks by artist " + a.getId());
+        return trackDao.findByArtist(a);
     }
 
     @Override
@@ -51,20 +50,20 @@ public class TrackServiceBean implements TrackService {
     }
 
     @Override
-    public List<Author> getAllAuthors() {
+    public List<Artist> getAllArtists() {
         log.info("searching all authors");
-        return authorDao.findAll();
+        return artistDao.findAll();
     }
 
     @Override
-    public Author getAuthorById(int id) {
+    public Artist getArtistById(int id) {
         log.info("searching author by id " + id);
-        return authorDao.findById(id);
+        return artistDao.findById(id);
     }
 
     @Override
-    public Author addAuthor(Author a) {
+    public Artist addArtist(Artist a) {
         log.info("about to add author " + a);
-        return authorDao.add(a);
+        return artistDao.add(a);
     }
 }

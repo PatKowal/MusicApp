@@ -22,6 +22,32 @@ Accept-Language: ja
 ## Integer w klasach by bylo bez "id" w json
 {
   "id": 0,
-  "name": "1",
+  "name": "12",
   "logo": "123"
 }
+
+
+### get all tracks
+GET http://localhost:8080/webapi/tracks
+
+### get track by id
+GET http://localhost:8080/webapi/tracks/1
+
+### get tracks in album
+GET http://localhost:8080/webapi/albums/1/tracks
+
+### create new track
+POST http://localhost:8080/webapi/tracks
+Content-Type: application/json
+
+{
+  "id": 0,
+  "title": "IO",
+  "artist": { "id": 1 },
+  "duration": 130
+}
+
+###
+##private String title
+##private Artist artist
+##private int duration

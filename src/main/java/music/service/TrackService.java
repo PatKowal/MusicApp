@@ -1,16 +1,16 @@
 package music.service;
 
-import music.model.Author;
+import music.model.Artist;
 import music.model.Track;
 
 import java.util.List;
 
 public interface TrackService {
     List<Track> getAllTracks();
-    List<Track> getTracksByAuthor(Author a);
+    List<Track> getTracksByArtist(Artist a);
     Track getTrackById(int id);
     Track addTrack(Track t);
-    List<Author> getAllAuthors();
-    Author getAuthorById(int id);
-    Author addAuthor(Author a);
+    List<Artist> getAllArtists();
+    Artist getArtistById(int id);
+    Artist addArtist(Artist a);
 }

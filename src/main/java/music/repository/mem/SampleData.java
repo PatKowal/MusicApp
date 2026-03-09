@@ -1,7 +1,7 @@
 package music.repository.mem;
 
 import music.model.Album;
-import music.model.Author;
+import music.model.Artist;
 import music.model.Track;
 
 import java.util.ArrayList;
@@ -9,14 +9,14 @@ import java.util.List;
 
 public class SampleData {
     static List<Album> albums = new ArrayList<>();
-    static List<Author> authors = new ArrayList<>();
+    static List<Artist> artists = new ArrayList<>();
     static List<Track> tracks = new ArrayList<>();
 
     static {
-        Author tolkien = new Author(1, "J.R.R.", "Tolkien");
-        Author rowling = new Author(2, "J.K.", "Rowling");
-        Author sapkowski = new Author(3, "Andrzej", "Sapkowski");
-        Author martin = new Author(4, "George", "Martin");
+        Artist tolkien = new Artist(1, "J.R.R.", "Tolkien");
+        Artist rowling = new Artist(2, "J.K.", "Rowling");
+        Artist sapkowski = new Artist(3, "Andrzej", "Sapkowski");
+        Artist martin = new Artist(4, "George", "Martin");
 
         Track hobbit = new Track(1, "The Hobbit Theme", tolkien, 320);
         Track lotr = new Track(2, "LOTR Soundtrack", tolkien, 420);
@@ -59,10 +59,10 @@ public class SampleData {
         tracks.add(got);
         tracks.add(dragons);
 
-        authors.add(tolkien);
-        authors.add(rowling);
-        authors.add(sapkowski);
-        authors.add(martin);
+        artists.add(tolkien);
+        artists.add(rowling);
+        artists.add(sapkowski);
+        artists.add(martin);
 
         albums.add(fantasyCollection);
         albums.add(epicThemes);
@@ -75,8 +75,8 @@ public class SampleData {
         t.addAlbum(a);
     }
 
-    private static void bind(Track t, Author a) {
+    private static void bind(Track t, Artist a) {
         a.addTrack(t);
-        t.setAuthor(a);
+        t.setArtist(a);
     }
 }

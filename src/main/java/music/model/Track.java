@@ -1,20 +1,22 @@
 package music.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Track {
     private int id;
     private String title;
-    private Author author;
+    private Artist artist;
     private int duration;
-
+    @JsonIgnore
     private List<Album> albums = new ArrayList<>();
 
-    public Track(int id, String title, Author author, int duration) {
+    public Track(int id, String title, Artist artist, int duration) {
         this.id = id;
         this.title = title;
-        this.author = author;
+        this.artist = artist;
         this.duration = duration;
     }
 
@@ -37,12 +39,12 @@ public class Track {
         this.title = title;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     public int getDuration() {
@@ -66,7 +68,7 @@ public class Track {
     public String toString() {
         return "Track{" +
                 "title='" + title + '\'' +
-                ", author=" + author +
+                ", artist=" + artist +
                 ", duration=" + duration +
                 '}';
     }

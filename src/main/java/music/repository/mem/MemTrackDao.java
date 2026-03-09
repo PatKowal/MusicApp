@@ -2,7 +2,7 @@ package music.repository.mem;
 
 import music.model.Album;
 import music.model.Track;
-import music.model.Author;
+import music.model.Artist;
 import org.springframework.stereotype.Component;
 import music.repository.TrackDao;
 import org.springframework.stereotype.Repository;
@@ -23,8 +23,8 @@ public class MemTrackDao implements TrackDao {
     }
 
     @Override
-    public List<Track> findByAuthor(Author a) {
-        return SampleData.tracks.stream().filter(m -> m.getAuthor() == a).collect(Collectors.toList());
+    public List<Track> findByArtist(Artist a) {
+        return SampleData.tracks.stream().filter(m -> m.getArtist() == a).collect(Collectors.toList());
     }
 
     @Override
