@@ -10,4 +10,5 @@ public interface AlbumService {
     List<Album> getAllAlbums();
     List<Album> getAlbumsByTrack(Track t);
     List<Track> getTracksInAlbum(Album a);
+    Album addAlbum(Album a);
 }

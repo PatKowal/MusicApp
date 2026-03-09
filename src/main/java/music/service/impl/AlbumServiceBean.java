@@ -7,11 +7,12 @@ import org.springframework.stereotype.Component;
 import music.repository.AlbumDao;
 import music.repository.TrackDao;
 import music.service.AlbumService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
 
-@Component
+@Service
 @Scope("prototype")
 public class AlbumServiceBean implements AlbumService {
     private static final Logger log = Logger.getLogger(AlbumService.class.getName());
@@ -19,7 +20,6 @@ public class AlbumServiceBean implements AlbumService {
     private AlbumDao albumDao;
     private TrackDao trackDao;
 
-    //@Autowired
     public AlbumServiceBean(AlbumDao albumDao, TrackDao trackDao) {
         log.info("creating album service bean");
         this.albumDao = albumDao;
@@ -48,5 +48,11 @@ public class AlbumServiceBean implements AlbumService {
     public List<Album> getAlbumsByTrack(Track t) {
         log.info("searching albums by track " + t.getId());
         return albumDao.findByTrack(t);
+    }
+
+    @Override
+    public Album addAlbum(Album a) {
+        log.info("adding new album " + a);
+        return albumDao.save(a);
     }
 }

@@ -25,4 +25,9 @@ public class DummyAlbumDao implements AlbumDao {
     public List<Album> findByTrack(Track t) {
         return List.of();
     }
+
+    @Override
+    public Album save(Album album) {
+        return null;
+    }
 }

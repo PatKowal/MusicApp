@@ -23,13 +23,6 @@ public class MusicComponent implements CommandLineRunner, ApplicationListener<Co
     @PostConstruct
     void init() { log.info("in post construct"); }
 
-    /*@PostConstruct
-    void init() {
-        List<Album> albums = albumService.getAllAlbums();
-        log.info("{} albums found.", albums.size());
-        albums.forEach(album -> log.info("{}",album));
-    }*/
-
     @Override
     public void run(String... args) throws Exception {
         log.info("program arguments {}", Arrays.asList(args));

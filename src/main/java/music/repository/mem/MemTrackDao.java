@@ -5,11 +5,12 @@ import music.model.Track;
 import music.model.Author;
 import org.springframework.stereotype.Component;
 import music.repository.TrackDao;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository("trackDao")
 public class MemTrackDao implements TrackDao {
     @Override
     public List<Track> findAll() {

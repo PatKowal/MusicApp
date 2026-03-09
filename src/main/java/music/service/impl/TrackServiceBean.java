@@ -7,11 +7,12 @@ import music.repository.AlbumDao;
 import music.repository.AuthorDao;
 import music.repository.TrackDao;
 import music.service.TrackService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
 
-@Component
+@Service
 public class TrackServiceBean implements TrackService {
     private static final Logger log = Logger.getLogger(TrackService.class.getName());
 

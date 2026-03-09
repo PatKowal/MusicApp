@@ -11,4 +11,6 @@ public interface AlbumDao {
     Album findById(int id);
 
     List<Album> findByTrack(Track t);
+
+    Album save(Album album);
 }

@@ -1,0 +1,26 @@
+### GET all albums
+GET http://localhost:8080/webapi/albums
+
+### GET album by id
+GET http://localhost:8080/webapi/albums/1
+Accept: application/xml
+
+### GET album with params
+GET http://localhost:8080/webapi/albums?phrase=abc
+custom-header: custom-value
+Cookie: some-cookie=some-value
+
+### GET albums playing track
+GET http://localhost:8080/webapi/tracks/1/albums
+Accept: application/json
+
+### create new album
+POST http://localhost:8080/webapi/albums
+Content-Type: application/json
+
+## Integer w klasach by bylo bez "id" w json
+{
+  "id": 0,
+  "name": "123",
+  "logo": "123"
+}
