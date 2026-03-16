@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>MUSIC</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <a href="./"><h1>Pix</h1></a>
+    <h2 th:text="${title}"></h2>
+    <h3>
+    </h3>
+</header>
+<section>
+
+    <table>
+        <tr>
+            <th>Logo</th>
+            <th>Name</th>
+            <th>Tracks</th>
+        </tr>
+        <tr th:each="a : ${albums}">
+            <td>
+                <img th:src="${a.logo}"/>
+            </td>
+            <td th:text="${a.name}"></td>
+            <td class="search-container">
+                <a class="search" th:href="@{/tracks?albumId={id}(id=${a.id})}"></a>
+            </td>
+        </tr>
+    </table>
+
+</section>
+<div id="orders">
+
+</div>
+<footer>
+    ${tip}
+</footer>
+
+</body>
+</html>

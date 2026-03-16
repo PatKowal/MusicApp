@@ -42,6 +42,11 @@ public class AlbumRest {
         log.info("phrase: {}", phrase);
         log.info("custom-header: {}", customHeader);
         log.info("some-cookie: {}", someCookie);
+
+        if (phrase != null && phrase.equals("foo")) {
+            throw new IllegalArgumentException("Foo!");
+        }
+
         List<Album> albums = albumService.getAllAlbums();
         log.info("{} albums found.", albums.size());
         return albums;

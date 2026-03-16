@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Track {
-    private int id;
+    private Integer id;
     private String title;
     private Artist artist;
     private int duration;
     @JsonIgnore
     private List<Album> albums = new ArrayList<>();
 
-    public Track(int id, String title, Artist artist, int duration) {
+    public Track(Integer id, String title, Artist artist, int duration) {
         this.id = id;
         this.title = title;
         this.artist = artist;
@@ -23,11 +23,11 @@ public class Track {
     public Track() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

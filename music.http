@@ -3,10 +3,10 @@ GET http://localhost:8080/webapi/albums
 
 ### GET album by id
 GET http://localhost:8080/webapi/albums/1
-Accept: application/xml
+Accept: application/json
 
 ### GET album with params
-GET http://localhost:8080/webapi/albums?phrase=abc
+GET http://localhost:8080/webapi/albums?phrase=foo
 custom-header: custom-value
 Cookie: some-cookie=some-value
 
@@ -21,7 +21,6 @@ Accept-Language: ja
 
 ## Integer w klasach by bylo bez "id" w json
 {
-  "id": 0,
   "name": "12",
   "logo": "123"
 }
@@ -41,13 +40,7 @@ POST http://localhost:8080/webapi/tracks
 Content-Type: application/json
 
 {
-  "id": 0,
   "title": "IO",
-  "artist": { "id": 1 },
+  "artistId": 10,
   "duration": 130
 }
-
-###
-##private String title
-##private Artist artist
-##private int duration

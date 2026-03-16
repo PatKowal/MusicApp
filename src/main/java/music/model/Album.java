@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Album {
 
-    private int id;
+    private Integer id;
 
     @NotNull
     @Size(min = 2, max = 20)
@@ -22,7 +22,7 @@ public class Album {
     @JsonIgnore
     private List<Track> tracks = new ArrayList<>();
 
-    public Album(int id, String name, String logo) {
+    public Album(Integer id, String name, String logo) {
         this.id = id;
         this.name = name;
         this.logo = logo;
@@ -31,11 +31,11 @@ public class Album {
     public Album() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -1,5 +1,6 @@
 package music.web.rest;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import music.model.Album;
@@ -8,6 +9,8 @@ import music.service.AlbumService;
 import music.service.TrackService;
 import music.web.rest.dto.TrackDTO;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -52,11 +55,14 @@ public class TrackRest {
     }
 
     @PostMapping("/tracks")
-    ResponseEntity<?> addTrack(@RequestBody TrackDTO trackDTO) {
+    ResponseEntity<?> addTrack(@Validated @RequestBody TrackDTO trackDTO, Errors errors) {
         log.info("Adding track {}", trackDTO);
+        if (errors.hasErrors()) {
+            return ResponseEntity.badRequest().build();
+        }
         Track track = new Track();
         track.setTitle(trackDTO.getTitle());
-        track.setArtist(trackService.getArtistById(trackDTO.getArtist().getId()));
+        track.setArtist(trackService.getArtistById(trackDTO.getArtistId()));
         track.setDuration(trackDTO.getDuration());
         track = trackService.addTrack(track);
         log.info("Added track {}", track);
