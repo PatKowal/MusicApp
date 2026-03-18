@@ -1,7 +1,7 @@
 package music.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.*;import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,16 +9,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "album")
 public class Album {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotNull
     @Size(min = 2, max = 20)
     private String name;
 
+    @Column(name = "logo")
     private String logo;
 
+    @ManyToMany(mappedBy = "albums")
     @JsonIgnore
     private List<Track> tracks = new ArrayList<>();
 
