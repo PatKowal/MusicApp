@@ -20,7 +20,7 @@ public class AlbumController {
     private final AlbumService albumService;
     private final TrackService trackService;
 
-    @GetMapping("/albums")
+    @GetMapping("/albums") //albums?trackId=1
 /*    String getAlbums(Model model) {
         log.info("Getting albums");
         List<Album> albums = albumService.getAllAlbums();

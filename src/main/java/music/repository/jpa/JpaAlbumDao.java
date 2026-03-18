@@ -32,6 +32,7 @@ public class JpaAlbumDao implements AlbumDao {
     public List<Album> findByTrack(Track t) {
         return entityManager
                 .createQuery("select a from Album a inner join a.tracks track where track =: track")
+                .setParameter("track", t)
                 .getResultList();
     }
 

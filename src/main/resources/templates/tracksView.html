@@ -18,8 +18,9 @@
     <table>
         <tr>
             <th>Title</th>
-            <th>Director</th>
-            <th>Duration</th>
+            <th>Artist</th>
+<!--            <th>Duration</th>-->
+            <th>Player</th>
             <th>Albums</th>
         </tr>
         <tr th:each="t : ${tracks}">
@@ -28,7 +29,13 @@
                 <a th:href="@{/tracks?artistId={id}(id=${t.artist.id})}"
                    th:text="${t.artist.firstName} + ' ' + ${t.artist.lastName}"></a>
             </td>
-            <td class="duration" th:text="${t.duration}"></td>
+<!--            <td class="duration" th:text="${t.duration}"></td>-->
+            <td>
+                <audio controls preload="none">
+                    <source th:src="@{/webapi/audio/{id}(id=${t.id})}" type="audio/mpeg">
+                    Brak wsparcia audio dla twojej przeglądarki.
+                </audio>
+            </td>
             <td class="search-container">
                 <a class="search" th:href="@{/albums?trackId={id}(id=${t.id})}"></a>
             </td>

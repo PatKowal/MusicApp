@@ -7,4 +7,5 @@ public class TrackDTO {
     private String title;
     private Integer artistId;
     private int duration;
+    private String fileUri;
 }

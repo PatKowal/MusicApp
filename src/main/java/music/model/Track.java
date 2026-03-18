@@ -16,6 +16,8 @@ public class Track {
     @JoinColumn(name = "artist_id")
     private Artist artist;
     private int duration;
+    @Column(name = "file_uri")
+    private String fileUri;
     @ManyToMany
     @JoinTable(
             name = "track_album",
@@ -25,11 +27,12 @@ public class Track {
     @JsonIgnore
     private List<Album> albums = new ArrayList<>();
 
-    public Track(Integer id, String title, Artist artist, int duration) {
+public Track(Integer id, String title, Artist artist, int duration, String fileUri) {
         this.id = id;
         this.title = title;
         this.artist = artist;
         this.duration = duration;
+        this.fileUri = fileUri;
     }
 
     public Track() {
@@ -75,6 +78,10 @@ public class Track {
         this.albums = albums;
     }
     public void addAlbum(Album a) { this.albums.add(a); }
+
+    public String getFileUri() { return fileUri; }
+
+    public void setFileUri(String fileUri) { this.fileUri = fileUri; }
 
     @Override
     public String toString() {

@@ -1,6 +1,5 @@
 package music.web.rest;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import music.model.Album;
@@ -8,12 +7,18 @@ import music.model.Track;
 import music.service.AlbumService;
 import music.service.TrackService;
 import music.web.rest.dto.TrackDTO;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -64,6 +69,7 @@ public class TrackRest {
         track.setTitle(trackDTO.getTitle());
         track.setArtist(trackService.getArtistById(trackDTO.getArtistId()));
         track.setDuration(trackDTO.getDuration());
+        track.setFileUri(trackDTO.getFileUri());
         track = trackService.addTrack(track);
         log.info("Added track {}", track);
         return ResponseEntity
@@ -74,5 +80,26 @@ public class TrackRest {
                         .build()
                         .toUri())
                 .body(track);
+    }
+
+    @GetMapping(value = "/audio/{id}", produces = "audio/mpeg")
+    ResponseEntity<Resource> getAudio(@PathVariable int id) {
+        log.info("Audio for track id: {}", id);
+        Track track = trackService.getTrackById(id);
+
+        if (track == null || track.getFileUri() == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Path path = Paths.get(track.getFileUri());
+        Resource resource = new FileSystemResource(path);
+
+        if(!resource.exists()) {
+            log.error("File not found at: {}", path.toAbsolutePath());
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_TYPE, "audio/mpeg")
+                .body(resource);
     }
 }

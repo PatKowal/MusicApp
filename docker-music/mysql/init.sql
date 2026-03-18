@@ -19,6 +19,7 @@ CREATE TABLE `track`
     `id`          int          NOT NULL AUTO_INCREMENT,
     `title`      varchar(255) NOT NULL,
     `duration`      int DEFAULT NULL,
+    `file_uri`      varchar(255) NOT NULL,
     `artist_id` int   DEFAULT NULL,
     PRIMARY KEY (`id`)
 );
@@ -40,6 +41,8 @@ INSERT INTO `album`(`id`, `logo`, `name`)
 VALUES ('4', 'https://upload.wikimedia.org/wikipedia/en/9/9c/MilesDavisKindofBlue.jpg', 'Kind of Blue');
 INSERT INTO `album`(`id`, `logo`, `name`)
 VALUES ('5', 'https://upload.wikimedia.org/wikipedia/en/a/a0/Lady_Gaga_-_Chromatica.png', 'Chromatica');
+INSERT INTO `album`(`id`, `logo`, `name`)
+VALUES ('6', 'AllKill.png', 'All-Kill');
 
 -- INSERTY DLA ARTIST (zamiast director)
 INSERT INTO `artist`(`id`, `firstname`, `lastname`)
@@ -52,19 +55,23 @@ INSERT INTO `artist`(`id`, `firstname`, `lastname`)
 VALUES ('4', 'Miles', 'Davis');
 INSERT INTO `artist`(`id`, `firstname`, `lastname`)
 VALUES ('5', 'Lady', 'Gaga');
+INSERT INTO `artist`(`id`, `firstname`, `lastname`)
+VALUES ('6', 'Michel', 'F. April');
 
 -- INSERTY DLA TRACK (zamiast movie)
 -- (id, title, duration, artist_id)
-INSERT INTO `track`(`id`, `title`, `duration`, `artist_id`)
-VALUES ('1', 'Bohemian Rhapsody', '354', '1');
-INSERT INTO `track`(`id`, `title`, `duration`, `artist_id`)
-VALUES ('2', 'Levitating', '203', '2');
-INSERT INTO `track`(`id`, `title`, `duration`, `artist_id`)
-VALUES ('3', 'Time', '275', '3');
-INSERT INTO `track`(`id`, `title`, `duration`, `artist_id`)
-VALUES ('4', 'So What', '562', '4');
-INSERT INTO `track`(`id`, `title`, `duration`, `artist_id`)
-VALUES ('5', 'Stupid Love', '193', '5');
+INSERT INTO `track`(`id`, `title`, `duration`, `file_uri`, `artist_id`)
+VALUES ('1', 'Bohemian Rhapsody', '354', 'bohemianrapsody.mp3', '1');
+INSERT INTO `track`(`id`, `title`, `duration`, `file_uri`, `artist_id`)
+VALUES ('2', 'Levitating', '203', 'levitating.mp3', '2');
+INSERT INTO `track`(`id`, `title`, `duration`, `file_uri`, `artist_id`)
+VALUES ('3', 'Time', '275', 'time.mp3', '3');
+INSERT INTO `track`(`id`, `title`, `duration`, `file_uri`, `artist_id`)
+VALUES ('4', 'So What', '562', 'sowhat.mp3', '4');
+INSERT INTO `track`(`id`, `title`, `duration`, `file_uri`, `artist_id`)
+VALUES ('5', 'Stupid Love', '193', 'stupidlove.mp3', '5');
+INSERT INTO `track`(`id`, `title`, `duration`, `file_uri`, `artist_id`)
+VALUES ('6', 'MiNA', '544', 'D:/music/MiNA.mp3', '6');
 
 -- INSERTY DLA TRACK_ALBUM (zamiast movie_cinema)
 INSERT INTO `track_album`(`track_id`, `album_id`)
@@ -77,6 +84,8 @@ INSERT INTO `track_album`(`track_id`, `album_id`)
 VALUES ('4', '4');
 INSERT INTO `track_album`(`track_id`, `album_id`)
 VALUES ('5', '5');
+INSERT INTO `track_album`(`track_id`, `album_id`)
+VALUES ('6', '6');
 
 -- UŻYTKOWNICY I ROLE (bez zmian)
 CREATE TABLE user

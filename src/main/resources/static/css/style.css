@@ -280,3 +280,8 @@ footer a {
     font-size: 17px;
     color: white;
 }
+
+audio {
+    height: 30px;
+    width: 400px;
+}

@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository("albumDao")
-@Primary
 public class MemAlbumDao implements AlbumDao {
     @Override
     public List<Album> findAll() { return SampleData.albums; }
