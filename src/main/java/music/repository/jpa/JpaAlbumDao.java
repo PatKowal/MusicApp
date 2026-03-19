@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@Primary
+//@Primary
 public class JpaAlbumDao implements AlbumDao {
     @PersistenceContext
     private EntityManager entityManager;

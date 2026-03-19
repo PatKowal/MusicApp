@@ -46,6 +46,7 @@ public class JpaTrackDao implements TrackDao {
 
     @Override
     public Track add(Track t) {
-        return null;
+        entityManager.persist(t);
+        return t;
     }
 }
