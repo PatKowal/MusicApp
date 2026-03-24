@@ -41,6 +41,32 @@ Content-Type: application/json
 
 {
   "title": "IO",
-  "artistId": 10,
-  "duration": 130
+  "artistId": 4,
+  "duration": 130,
+  "fileUri": "uri.mp3"
 }
+
+### create new track without exsisting artist
+POST http://localhost:8080/webapi/tracks
+Content-Type: application/json
+
+{
+  "title": "IO",
+  "artistId": 4,
+  "duration": 130,
+  "fileUri": "uri.mp3"
+}
+
+### create new track named "Apocalypse Now"
+POST http://localhost:8080/webapi/tracks
+Content-Type: application/json
+
+{
+  "title": "Apocalypse Now",
+  "artistId": 4,
+  "duration": 130,
+  "fileUri": "uri.mp3"
+}
+
+### shutdown service
+POST http://localhost:8080/actuator/shutdown

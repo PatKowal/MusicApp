@@ -1,5 +1,6 @@
 package music.repository.data;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import music.model.Album;
 import music.model.Track;
@@ -25,5 +26,6 @@ public class DataAlbumDao implements AlbumDao {
     public List<Album> findByTrack(Track t) { return repository.findAllByTrack(t); }
 
     @Override
+    @Transactional
     public Album save(Album album) { return repository.save(album); }
 }
