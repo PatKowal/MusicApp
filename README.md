@@ -25,5 +25,7 @@ Aplikacja korzysta z narzędzia Maven. Możesz ją uruchomić bezpośrednio z po
 ./mvnw spring-boot:run
 ```
 4. **Testowanie i dostęp (Web i API):**
-**Interfejs Web:** Po uruchomieniu, aplikacja jest dostępna pod adresem http://localhost:8080. Możesz przeglądać katalog artystów, albumów i utworów bezpośrednio w przeglądarce dzięki dynamicznym widokom.
+
+Po uruchomieniu, aplikacja jest dostępna pod adresem http://localhost:8080. Możesz przeglądać katalog artystów, albumów i utworów bezpośrednio w przeglądarce dzięki dynamicznym widokom.
+
 **Testowanie API:** Uruchom music.http znajdujący się z głównym folderze projektu, aby przetestować endpointy bez konieczności korzystania z zewnętrznych narzędzi typu Postman.
