@@ -3,6 +3,7 @@ package music.service.impl;
 import music.model.Album;
 import music.model.Track;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import music.repository.AlbumDao;
 import music.repository.TrackDao;
@@ -50,6 +51,7 @@ public class AlbumServiceBean implements AlbumService {
         return albumDao.findByTrack(t);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @Override
     public Album addAlbum(Album a) {
         log.info("adding new album " + a);
